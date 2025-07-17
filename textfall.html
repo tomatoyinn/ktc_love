@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love Rain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffe6f0;
+      overflow: hidden;
+      font-family: 'Handlee', cursive;
+      height: 100vh;
+      position: relative;
+    }
+
+    .btn-love {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      margin: auto;
+      transform: translateX(-50%);
+      background-color: #ffb6c1;
+      border: none;
+      padding: 12px 40px;
+      border-radius: 30px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .love-text {
+      position: absolute;
+      color: #ff4da6;
+      font-size: 2rem;
+      animation: fall 3s linear forwards;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(20deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="btn-love" onclick="dropLove()">Click me, bby 💘</button>
+
+  <script>
+    function dropLove() {
+      for (let i = 0; i < 30; i++) {
+        const love = document.createElement("div");
+        love.classList.add("love-text");
+        love.textContent = "I love You";
+        love.style.left = Math.random() * 100 + "vw";
+        love.style.fontSize = (Math.random() * 1.5 + 1) + "rem";
+        love.style.animationDuration = (Math.random() * 2 + 3) + "s";
+
+        document.body.appendChild(love);
+
+        // Remove the element after it falls
+        setTimeout(() => {
+          love.remove();
+        }, 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
